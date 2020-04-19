@@ -4,17 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "webpack-dev-server": "webpack-dev-server",
     "webpack": "webpack",
     "debug": "node --inspect --inspect-brk ./node_modules/webpack/bin/webpack.js",
-    "prod": "npm run webpack -- --mode production",
-    "dev": "npm run webpack -- --mode development --watch",
-    "prod:debug": "npm run debug -- --mode production",
-    "dev:debug": "npm run debug -- --mode development"
+    "prod": "npm run webpack -- --env.mode production",
+    "dev": "npm run webpack-dev-server -- --env.mode development",
+    "prod:debug": "npm run debug -- --env.mode production",
+    "dev:debug": "npm run debug -- --env.mode development"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "html-webpack-plugin": "^4.2.0",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }
