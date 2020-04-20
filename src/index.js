@@ -2,7 +2,7 @@ import nav from "./nav";
 // import * as GSAP from "gsap";
 const getGSAP = () => import("gsap");
 // import { footer } from "./footer";
-const getFooter = () => import("./footer");
+const getFooter = () => import(/* webpackChunkName: "footer" */ "./footer");
 const getLodashUniq = () => import("lodash-es/uniq");
 import makeButton from "./button";
 import { makeColorStyle } from "./button-style";
