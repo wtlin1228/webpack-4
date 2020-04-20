@@ -10,8 +10,22 @@ import makeImage from "./image";
 import css from "./footer.css";
 import buttonStyles from "./button.css";
 import imageUrl from "./webpack-logo.jpg";
+
 // const setButtonStyle = (color) => import(`./button-styles/${color}`);
-const setButtonStyle = (color) => import(`./button-styles/${color}.js`);
+if (process.env.NODE_ENV === "development") {
+  var setButtonStyle = (color) =>
+    import(
+      /* webpackChunkName: "button-styles" */
+      /* webpackMode: "lazy-once" */
+      `./button-styles/${color}.js`
+    );
+} else {
+  var setButtonStyle = (color) =>
+    import(
+      /* webpackChunkName: "button-styles" */
+      `./button-styles/${color}.js`
+    );
+}
 
 const image = makeImage(imageUrl);
 const button = makeButton("Yay! A Button!");
