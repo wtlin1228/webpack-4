@@ -9,8 +9,9 @@ import { makeColorStyle } from "./button-style";
 import makeImage from "./image";
 import css from "./footer.css";
 import buttonStyles from "./button.css";
-
 import imageUrl from "./webpack-logo.jpg";
+// const setButtonStyle = (color) => import(`./button-styles/${color}`);
+const setButtonStyle = (color) => import(`./button-styles/${color}.js`);
 
 const image = makeImage(imageUrl);
 const button = makeButton("Yay! A Button!");
@@ -26,6 +27,10 @@ button.addEventListener("click", (e) => {
   getGSAP().then((gsap) => console.log(gsap));
 
   getLodashUniq().then((uniq) => console.log(uniq));
+
+  setButtonStyle("red").then((styleStr) => {
+    button.style = styleStr.default;
+  });
 });
 
 document.body.appendChild(image);
